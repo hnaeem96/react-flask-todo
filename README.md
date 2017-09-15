@@ -1,7 +1,7 @@
 # react-flask-todo
 A todo application built with React &amp; Flask
 
-###Getting Started
+### Getting Started
 To use the application locally, you'll need to initialize and create
 the database first. Go ahead and enter the python console by tying:
 
@@ -16,7 +16,7 @@ You're all set! Now run the following start the app on (Port 5000)[http://localh
 
 `$ python Flask.py`
 
-###Technologies Used
-######Database: SQLite, SQL Alchemy for ORM
-######Back-End: Python, Flask
-######Front-End: JavaScript, React, HTML, CSS
+### Technologies Used
+###### Database: SQLite, SQL Alchemy for ORM
+###### Back-End: Python, Flask
+###### Front-End: JavaScript, React, HTML, CSS
