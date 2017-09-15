@@ -19,7 +19,7 @@ You're all set! Now exit Python:
 
 `>>> exit()`
 
-Run the following start the app:
+Run the following to start the app:
 
 `$ python Flask.py`
 
