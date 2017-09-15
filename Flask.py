@@ -114,4 +114,4 @@ def delete_todo():
     return jsonify({'incomplete': incomplete, 'result': serialized})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
