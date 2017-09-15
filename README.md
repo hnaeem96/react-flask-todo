@@ -15,11 +15,13 @@ and then:
 
 `$ db.create_all()`
 
-You're all set! Now run the following start the app on (Port 5000)[http://localhost:5000/]:
+You're all set! Now run the following start the app:
 
 `$ python Flask.py`
 
+The app is now live at [Port 5000](http://localhost:5000/)!
+
 ### Technologies Used
-###### Database: SQLite, SQL Alchemy for ORM
+###### Database: SQLite, SQL Alchemy
 ###### Back-End: Python, Flask
 ###### Front-End: JavaScript, React, HTML, CSS
