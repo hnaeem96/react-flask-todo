@@ -10,7 +10,7 @@ the database first. Go ahead and enter the python console by tying:
 Follow up with:
 
 `$ from Flask import db`
-`$ db.create_all()
+`$ db.create_all()`
 
 You're all set! Now run the following start the app on (Port 5000)[http://localhost:5000/]:
 
