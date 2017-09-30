@@ -67,7 +67,7 @@ class Todo extends React.Component {
       const request = [currentId, switchingId];
 
       fetch('/todos/order/', {
-        method: 'POST',
+        method: 'PATCH',
         headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
@@ -97,7 +97,7 @@ class Todo extends React.Component {
       const request = [currentId, switchingId];
 
       fetch('/todos/order/', {
-        method: 'POST',
+        method: 'PATCH',
         headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'

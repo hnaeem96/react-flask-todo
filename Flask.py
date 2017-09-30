@@ -81,7 +81,7 @@ def complete_all():
     serialized = [get_todos_serialized(todo) for todo in todos]
     return jsonify({'incomplete': incomplete, 'result': serialized})
 
-@app.route('/todos/order/', methods = ['POST'])
+@app.route('/todos/order/', methods = ['PATCH'])
 def todo_order():
     current_id = request.json[0]
     other_id = request.json[1]
