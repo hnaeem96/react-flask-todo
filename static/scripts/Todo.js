@@ -95,7 +95,7 @@ class Todo extends React.Component {
       const currentId = id;
       const switchingId = todos[index + 1].id;
       const request = [currentId, switchingId];
-      
+
       fetch('/todos/order/', {
         method: 'POST',
         headers : {
@@ -116,7 +116,7 @@ class Todo extends React.Component {
   }
 
   renderTodos() {
-    return _.map(this.state.todos, todo => {
+    return this.state.todos.map((todo) => {
       return (
         <TodoItem
           id={todo.id}
@@ -129,7 +129,7 @@ class Todo extends React.Component {
           moveDown={this.orderDown}
         />
       );
-    });
+    })
   }
 
   render() {
