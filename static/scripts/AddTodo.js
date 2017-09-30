@@ -26,14 +26,24 @@ class AddTodo extends React.Component {
         order = (this.props.todoList[this.props.todoList.length - 1].order) + 1;
       }
       const request = [val, order]
-      axios.post('/todos/add/', request)
-        .then((response) => {
-          this.props.updateParent(response.data);
-          this.setState({ value: ''});
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+
+      fetch('/todos/add/', {
+        method: 'POST',
+        headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+        },
+        body: JSON.stringify(request)
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        this.props.updateParent(responseJson);
+        this.setState({ value: ''});
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     }
   }
 

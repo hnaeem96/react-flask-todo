@@ -16,31 +16,44 @@ class Todo extends React.Component {
   }
 
   getTodos() {
-    axios.get('/todos/')
-      .then((response) => {
-        this.setState({todos: response.data.result, incomplete: response.data.incomplete});
+    return fetch('/todos/')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        this.setState({todos: responseJson.result, incomplete: responseJson.incomplete});
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
       });
   }
 
   updateState(data) {
     let updatedTodos = data.result;
     let incompletedTodos = data.incomplete;
-    
+
     this.setState({todos: updatedTodos, incomplete: incompletedTodos});
   }
 
   markAllAsComplete() {
-    const request = 'update';
-    axios.post('/todos/update/all/', request)
-      .then((response) => {
-        this.setState({todos: response.data.result, incomplete: response.data.incomplete});
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const request = ['update'];
+
+    fetch('/todos/update/all/', {
+      method: 'POST',
+      headers : {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      },
+      body: JSON.stringify(request)
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      this.setState({todos: responseJson.result, incomplete: responseJson.incomplete});
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
   }
 
   orderUp(id) {
@@ -52,13 +65,23 @@ class Todo extends React.Component {
       const currentId = id;
       const switchingId = todos[index - 1].id;
       const request = [currentId, switchingId];
-      axios.post('/todos/order/', request)
-        .then((response) => {
-          this.setState({todos: response.data.result, incomplete: response.data.incomplete});
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+
+      fetch('/todos/order/', {
+        method: 'POST',
+        headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+        },
+        body: JSON.stringify(request)
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        this.setState({todos: responseJson.result, incomplete: responseJson.incomplete});
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     }
   }
 
@@ -72,13 +95,23 @@ class Todo extends React.Component {
       const currentId = id;
       const switchingId = todos[index + 1].id;
       const request = [currentId, switchingId];
-      axios.post('/todos/order/', request)
-        .then((response) => {
-          this.setState({todos: response.data.result, incomplete: response.data.incomplete});
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      
+      fetch('/todos/order/', {
+        method: 'POST',
+        headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+        },
+        body: JSON.stringify(request)
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        console.log(responseJson);
+        this.setState({todos: responseJson.result, incomplete: responseJson.incomplete});
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     }
   }
 
