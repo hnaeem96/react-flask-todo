@@ -19,7 +19,6 @@ class Todo extends React.Component {
     return fetch('/todos/')
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         this.setState({todos: responseJson.result, incomplete: responseJson.incomplete});
       })
       .catch((error) => {
@@ -47,7 +46,6 @@ class Todo extends React.Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson);
       this.setState({todos: responseJson.result, incomplete: responseJson.incomplete});
     })
     .catch((error) => {
@@ -105,7 +103,6 @@ class Todo extends React.Component {
       })
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         this.setState({todos: responseJson.result, incomplete: responseJson.incomplete});
       })
       .catch((error) => {
