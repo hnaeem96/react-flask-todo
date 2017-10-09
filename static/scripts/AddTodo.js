@@ -25,7 +25,7 @@ class AddTodo extends React.Component {
       } else {
         order = (this.props.todoList[this.props.todoList.length - 1].order) + 1;
       }
-      const request = [val, order]
+      const request = [val, order];
 
       fetch('/todos/add/', {
         method: 'POST',

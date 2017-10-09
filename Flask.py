@@ -53,10 +53,10 @@ def add_todo():
     serialized = [get_todos_serialized(todo) for todo in todos]
     return jsonify({'incomplete': incomplete, 'result': serialized})
 
-@app.route('/todos/update/', methods = ['POST'])
+@app.route('/todos/update/', methods = ['PATCH'])
 def update_todo():
-    for data in request.form:
-        id = data
+    id = request.json[0]
+    
     todo = TodoList.query.get(id)
     if todo.done:
         todo.done = False
@@ -100,10 +100,9 @@ def todo_order():
     serialized = [get_todos_serialized(todo) for todo in todos]
     return jsonify({'incomplete': incomplete, 'result': serialized})
 
-@app.route('/todos/delete/', methods = ['POST'])
+@app.route('/todos/delete/', methods = ['DELETE'])
 def delete_todo():
-    for data in request.form:
-        id = data
+    id = request.json[0]
 
     todo = TodoList.query.get(id)
     db.session.delete(todo)

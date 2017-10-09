@@ -4,23 +4,45 @@ class TodoItem extends React.Component {
   }
 
   handleCheckbox(id) {
-    axios.post('/todos/update/', id)
-      .then((response) => {
-        this.props.updateParent(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const request = [id];
+
+    fetch('/todos/update/', {
+      method: 'PATCH',
+      headers : {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      },
+      body: JSON.stringify(request)
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      this.props.updateParent(responseJson);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
   handleDelete(id) {
-    axios.post('/todos/delete/', id)
-      .then((response) => {
-        this.props.updateParent(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const request = [id];
+
+    fetch('/todos/delete/', {
+      method: 'DELETE',
+      headers : {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+      },
+      body: JSON.stringify(request)
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+      console.log(responseJson);
+      this.props.updateParent(responseJson);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
   }
 
   render() {
