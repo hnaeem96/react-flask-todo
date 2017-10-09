@@ -56,7 +56,7 @@ def add_todo():
 @app.route('/todos/update/', methods = ['PATCH'])
 def update_todo():
     id = request.json[0]
-    
+
     todo = TodoList.query.get(id)
     if todo.done:
         todo.done = False
@@ -69,7 +69,7 @@ def update_todo():
     serialized = [get_todos_serialized(todo) for todo in todos]
     return jsonify({'incomplete': incomplete, 'result': serialized})
 
-@app.route('/todos/update/all/', methods = ['POST'])
+@app.route('/todos/update/all/', methods = ['PATCH'])
 def complete_all():
     todos = TodoList.query.all()
     for todo in todos:

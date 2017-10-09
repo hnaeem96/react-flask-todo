@@ -37,7 +37,7 @@ class Todo extends React.Component {
     const request = ['update'];
 
     fetch('/todos/update/all/', {
-      method: 'POST',
+      method: 'PATCH',
       headers : {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
