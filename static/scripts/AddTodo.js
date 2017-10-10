@@ -58,7 +58,7 @@ class AddTodo extends React.Component {
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <input className="todo-form-submit" type="submit" value="Add Todo"/>
+      <input className="todo-form-submit" type="submit" value="Add Todo"/>
       </form>
     );
   }
