@@ -27,7 +27,7 @@ class AddTodo extends React.Component {
       }
       const request = [val, order];
 
-      fetch('/todos/add/', {
+      fetch('/todos/', {
         method: 'POST',
         headers : {
         'Content-Type': 'application/json',

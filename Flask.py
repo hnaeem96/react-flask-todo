@@ -40,7 +40,7 @@ def get_todos():
     serialized = [get_todos_serialized(todo) for todo in todos]
     return jsonify({'incomplete': incomplete, 'result': serialized})
 
-@app.route('/todos/add/', methods = ['POST'])
+@app.route('/todos/', methods = ['POST'])
 def add_todo():
     todo = request.json[0]
     order = request.json[1]
@@ -53,7 +53,7 @@ def add_todo():
     serialized = [get_todos_serialized(todo) for todo in todos]
     return jsonify({'incomplete': incomplete, 'result': serialized})
 
-@app.route('/todos/update/', methods = ['PATCH'])
+@app.route('/todos/', methods = ['PATCH'])
 def update_todo():
     id = request.json[0]
 
@@ -69,7 +69,19 @@ def update_todo():
     serialized = [get_todos_serialized(todo) for todo in todos]
     return jsonify({'incomplete': incomplete, 'result': serialized})
 
-@app.route('/todos/update/all/', methods = ['PATCH'])
+@app.route('/todos/', methods = ['DELETE'])
+def delete_todo():
+    id = request.json[0]
+
+    todo = TodoList.query.get(id)
+    db.session.delete(todo)
+    db.session.commit()
+    todos = TodoList.query.order_by(asc(TodoList.order)).all()
+    incomplete = TodoList.query.filter_by(done = False).count()
+    serialized = [get_todos_serialized(todo) for todo in todos]
+    return jsonify({'incomplete': incomplete, 'result': serialized})
+
+@app.route('/todos/update/', methods = ['PATCH'])
 def complete_all():
     todos = TodoList.query.all()
     for todo in todos:
@@ -94,18 +106,6 @@ def todo_order():
     current.order = other_order
     other.order = current_order
 
-    db.session.commit()
-    todos = TodoList.query.order_by(asc(TodoList.order)).all()
-    incomplete = TodoList.query.filter_by(done = False).count()
-    serialized = [get_todos_serialized(todo) for todo in todos]
-    return jsonify({'incomplete': incomplete, 'result': serialized})
-
-@app.route('/todos/delete/', methods = ['DELETE'])
-def delete_todo():
-    id = request.json[0]
-
-    todo = TodoList.query.get(id)
-    db.session.delete(todo)
     db.session.commit()
     todos = TodoList.query.order_by(asc(TodoList.order)).all()
     incomplete = TodoList.query.filter_by(done = False).count()

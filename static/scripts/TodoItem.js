@@ -6,7 +6,7 @@ class TodoItem extends React.Component {
   handleCheckbox(id) {
     const request = [id];
 
-    fetch('/todos/update/', {
+    fetch('/todos/', {
       method: 'PATCH',
       headers : {
       'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ class TodoItem extends React.Component {
   handleDelete(id) {
     const request = [id];
 
-    fetch('/todos/delete/', {
+    fetch('/todos/', {
       method: 'DELETE',
       headers : {
       'Content-Type': 'application/json',

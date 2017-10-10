@@ -36,7 +36,7 @@ class Todo extends React.Component {
   markAllAsComplete() {
     const request = ['update'];
 
-    fetch('/todos/update/all/', {
+    fetch('/todos/update/', {
       method: 'PATCH',
       headers : {
       'Content-Type': 'application/json',
