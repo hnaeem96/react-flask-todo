@@ -16,7 +16,6 @@ class TodoItem extends React.Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson);
       this.props.updateParent(responseJson);
     })
     .catch((error) => {
@@ -37,7 +36,6 @@ class TodoItem extends React.Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      console.log(responseJson);
       this.props.updateParent(responseJson);
     })
     .catch((error) => {

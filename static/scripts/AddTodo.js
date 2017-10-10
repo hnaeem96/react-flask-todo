@@ -37,7 +37,6 @@ class AddTodo extends React.Component {
       })
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(responseJson);
         this.props.updateParent(responseJson);
         this.setState({ value: ''});
       })
